@@ -154,7 +154,7 @@ int sys_whoami(char* name, unsigned int size){
 在`~/oslab/linux-0.11/kernel`下找到`system_call.s`，打开，找到`nr_system_calls`，将其数值 +2。
 
 
-## 8 修改`Makefile`文件，使刚才添加的`who.c`可以和其它`Linux`代码编译链接到一起。修改内容如下：
+## 8 修改`Makefile`文件并重新编译，使刚才添加的`who.c`可以和其它`Linux`代码编译链接到一起。修改内容如下：
 我们要修改的是`~/oslab/linux-0.11/kernel/Makefile`。需要修改两处：
 
 第一处:
@@ -169,7 +169,7 @@ OBJS  = sched.o system_call.o traps.o asm.o fork.o \
         panic.o printk.o vsprintf.o sys.o exit.o \
         signal.o mktime.o who.o
 ```
-添加了 who.o。
+添加了`who.o`
 
 第二处:
 ```bash
@@ -190,9 +190,9 @@ exit.s exit.o: exit.c ../include/errno.h ../include/signal.h \
   ../include/linux/kernel.h ../include/linux/tty.h ../include/termios.h \
   ../include/asm/segment.h
 ```
-添加了who.s who.o: who.c ../include/linux/kernel.h ../include/unistd.h。
+添加了`who.s who.o: who.c ../include/linux/kernel.h ../include/unistd.h`
 
-修改完成后，在kernel目录下打开终端，使用 make 编译即可。
+修改完成后，在kernel目录下打开终端，使用`make`编译即可。
 
 ## 9 回到oslab目录，使用`./run`打开Bochs，在Bochs中编译`iam.c、whoami.c`：
 ```bash
