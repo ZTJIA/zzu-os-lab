@@ -153,6 +153,7 @@ int sys_whoami(char* name, unsigned int size){
 
 ## 8 修改`Makefile`文件，使刚才添加的`who.c`可以和其它`Linux`代码编译链接到一起。修改内容如下：
 我们要修改的是`~/oslab/linux-0.11/kernel/Makefile`。需要修改两处：
+
 第一处:
 ```bash
 OBJS  = sched.o system_call.o traps.o asm.o fork.o \
@@ -187,7 +188,9 @@ exit.s exit.o: exit.c ../include/errno.h ../include/signal.h \
   ../include/asm/segment.h
 ```
 添加了who.s who.o: who.c ../include/linux/kernel.h ../include/unistd.h。
+
 修改完成后，在kernel目录下打开终端，使用 make 编译即可。
+
 ## 9 回到oslab目录，使用`./run`打开Bochs，在Bochs中编译`iam.c、whoami.c`：
 ```bash
 gcc -o iam iam.c
