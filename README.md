@@ -2,6 +2,7 @@
 作者采用 Ubuntu 18.04 进行操作。其他版本理论上也可以，只是作者在尝试更新版本时会遇到一些莫名其妙的错误。
 
 Linux 0.11 环境部署按照下列链接：[哈尔滨工业大学《操作系统》课程实验指导手册、实验环境（64位支持）及源码](https://github.com/DeathKing/hit-oslab?tab=readme-ov-file)
+
 参照上述链接进行安装之后，需要编译Linux0.11的内核。操作如下：
 ```bash
 cd ~/oslab/liunx-0.11
