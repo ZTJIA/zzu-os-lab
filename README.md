@@ -116,7 +116,7 @@ sys_whoami, sys_iam
 char a[80] = {0};
 int sys_iam(const char* name){
 	int i = 0;
-	while( (get_fs_byte(name + i)) != `\0`){
+	while( (get_fs_byte(name + i)) != '\0'){
 		i++;
 	}
 	if( i >= 24){
@@ -124,7 +124,7 @@ int sys_iam(const char* name){
 	}
 	printk("len(a):%d\n",i);
 	i = 0;
-	while( (get_fs_byte(name + i)) != `\0`){
+	while( (get_fs_byte(name + i)) != '\0'){
 		a[i] = get_fs_byte(name + i);
 		i++;
 	}
@@ -133,14 +133,14 @@ int sys_iam(const char* name){
 
 int sys_whoami(char* name, unsigned int size){
 	int i = 0;
-	while( (a[i]) != `\0`){
+	while( (a[i]) != '\0'){
 		i++;
 	}
 	if( i > size){
 		return -1;
 	}
 	i = 0;
-	while( (a[i]) != `\0`){
+	while( (a[i]) != '\0'){
 		put_fs_byte(a[i],name + i);		
 		i++;
 	}
