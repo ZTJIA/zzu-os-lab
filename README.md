@@ -19,7 +19,7 @@ cd ~/oslab
 
 ## 2. 添加系统调用程序
 在`~/oslab/hdc/usr/root`下建立`whoami.c`，`iam.c`两个文件，并实现功能。一个简单的示例如下：
-iam.c
+`iam.c`
 ```bash
 #define __LIBRARY__
 #include <errno.h>
@@ -43,9 +43,8 @@ int main(int argc,char* argv[]){
 	return 0;
 }
 ```
-
+`whoami.c`
 ```bash
-whoami.c
 #define __LIBRARY__
 #include <unistd.h>
 #include <string.h>
