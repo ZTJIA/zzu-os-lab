@@ -108,7 +108,6 @@ sys_whoami, sys_iam
 ## 6 实现内核函数
 在`~/oslab/linux-0.11/kernel`下新建文件，命名为`who.c`，内容如下：
 ```bash
-//who.c
 #define __LIBRARY__
 #include <asm/segment.h>
 #include <unistd.h>
