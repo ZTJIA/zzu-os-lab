@@ -18,7 +18,7 @@ cd ~/oslab
 ```
 
 ## 2. 添加系统调用程序
-在`~/oslab/hdc/usr/root`下建立'whoami.c'，'iam.c'两个文件，并实现功能。一个简单的示例如下：
+在`~/oslab/hdc/usr/root`下建立`whoami.c`，`iam.c`两个文件，并实现功能。一个简单的示例如下：
 iam.c
 ```bash
 #define __LIBRARY__
@@ -71,9 +71,9 @@ int main(){
 ```
 
 ## 3 添加系统调用号
-按照下列路径找到'unistd.h'：
-'~/oslab/hdc/usr/include/unistd.h'
-打开该文件。找到形如'#define __NR_setregid  71'，在其后添加下列语句：
+按照下列路径找到`unistd.h`：
+`~/oslab/hdc/usr/include/unistd.h`
+打开该文件。找到形如`#define __NR_setregid  71`，在其后添加下列语句：
 ```bash
 #define __NR_whoami   72
 #define __NR_iam      73
@@ -87,21 +87,21 @@ sudo umount hdc
 ```
 
 ## 5
-在'linux-0.11/include/linux'下找到'sys.h'文件，打开进行编辑：
+在`linux-0.11/include/linux`下找到`sys.h`文件，打开进行编辑：
 添加下列语句：
 ```bash
 extern int sys_whoami();
 extern int sys_iam();
 ```
 
-并在函数表'fn_ptr sys_call_table[]'的末尾中增加两个函数引用：
+并在函数表`fn_ptr sys_call_table[]`的末尾中增加两个函数引用：
 ```bash
 sys_whoami, sys_iam
 ```
 保存后关闭文件
 
 ## 2.6 实现内核函数
-在'~/oslab/linux-0.11/kernel'下新建文件，命名为'who.c'，内容如下：
+在`~/oslab/linux-0.11/kernel`下新建文件，命名为`who.c`，内容如下：
 ```bash
 //who.c
 #define __LIBRARY__
@@ -112,7 +112,7 @@ sys_whoami, sys_iam
 char a[80] = {0};
 int sys_iam(const char* name){
 	int i = 0;
-	while( (get_fs_byte(name + i)) != '\0'){
+	while( (get_fs_byte(name + i)) != `\0`){
 		i++;
 	}
 	if( i >= 24){
@@ -120,7 +120,7 @@ int sys_iam(const char* name){
 	}
 	printk("len(a):%d\n",i);
 	i = 0;
-	while( (get_fs_byte(name + i)) != '\0'){
+	while( (get_fs_byte(name + i)) != `\0`){
 		a[i] = get_fs_byte(name + i);
 		i++;
 	}
@@ -129,14 +129,14 @@ int sys_iam(const char* name){
 
 int sys_whoami(char* name, unsigned int size){
 	int i = 0;
-	while( (a[i]) != '\0'){
+	while( (a[i]) != `\0`){
 		i++;
 	}
 	if( i > size){
 		return -1;
 	}
 	i = 0;
-	while( (a[i]) != '\0'){
+	while( (a[i]) != `\0`){
 		put_fs_byte(a[i],name + i);		
 		i++;
 	}
@@ -144,8 +144,8 @@ int sys_whoami(char* name, unsigned int size){
 }
 ```
 
-## 2.6修改'Makefile'文件，使刚才添加的'who.c'可以和其它'Linux'代码编译链接到一起。修改内容如下：
-我们要修改的是'~/oslab/linux-0.11/kernel/Makefile'。需要修改两处：
+## 2.6修改`Makefile`文件，使刚才添加的`who.c`可以和其它`Linux`代码编译链接到一起。修改内容如下：
+我们要修改的是`~/oslab/linux-0.11/kernel/Makefile`。需要修改两处：
 第一处:
 ```bash
 OBJS  = sched.o system_call.o traps.o asm.o fork.o \
@@ -181,7 +181,7 @@ exit.s exit.o: exit.c ../include/errno.h ../include/signal.h \
 ```
 添加了who.s who.o: who.c ../include/linux/kernel.h ../include/unistd.h。
 修改完成后，在kernel目录下打开终端，使用 make 编译即可。
-## 2.7 回到oslab目录，使用'./run'打开Bochs，在Bochs中编译'iam.c、whoami.c'：
+## 2.7 回到oslab目录，使用`./run`打开Bochs，在Bochs中编译`iam.c、whoami.c`：
 ```bash
 gcc -o iam iam.c
 gcc -o whoami whoami.c
