@@ -7,7 +7,7 @@ Linux 0.11 环境部署按照下列链接：[哈尔滨工业大学《操作系�
 cd ~/oslab/liunx-0.11
 make
 ```
-等待编译结束后，运行`oslab`目录下的run脚本，出现如下界面说明部署成功：
+等待编译结束后，在`oslab`目录下运行`./run`，出现如下界面说明部署成功：
 
 <img src="https://github.com/ZTJIA/zzu-os-lab/blob/main/success.png" width="400">
 
