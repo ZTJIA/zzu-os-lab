@@ -4,6 +4,7 @@
 Linux 0.11 环境部署按照下列链接：[哈尔滨工业大学《操作系统》课程实验指导手册、实验环境（64位支持）及源码](https://github.com/DeathKing/hit-oslab?tab=readme-ov-file)
 
 出现如下界面说明部署成功：
+
 <img src="https://github.com/ZTJIA/zzu-os-lab/blob/main/success.png" width="400">
 
 如果出现黑屏，则说明进入的是调试模式。这时在系统终端中输入 `c` 并按下回车键，就可以正常显示。
