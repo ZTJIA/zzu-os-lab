@@ -8,7 +8,8 @@ Linux 0.11 环境部署按照下列链接：[哈尔滨工业大学《操作系�
 <img src="https://github.com/ZTJIA/zzu-os-lab/blob/main/success.png" width="400">
 
 如果出现黑屏，则说明进入的是调试模式。这时在系统终端中输入 `c` 并按下回车键，就可以正常显示。
-![调试模式](https://github.com/ZTJIA/zzu-os-lab/blob/main/success.png)
+
+<img src="https://github.com/ZTJIA/zzu-os-lab/blob/main/success.png" width="400">
 
 # 操作步骤
 
