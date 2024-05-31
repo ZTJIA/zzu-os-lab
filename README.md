@@ -151,7 +151,7 @@ int sys_whoami(char* name, unsigned int size){
 
 
 ## 7 修改系统调用总数
-在`~/oslab/linux-0.11/kernel`下找到`system_call.s`，打开，找到`nr_system_calls`,将其数值 +2。
+在`~/oslab/linux-0.11/kernel`下找到`system_call.s`，打开，找到`nr_system_calls`，将其数值 +2。
 
 
 ## 8 修改`Makefile`文件，使刚才添加的`who.c`可以和其它`Linux`代码编译链接到一起。修改内容如下：
