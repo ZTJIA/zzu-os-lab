@@ -85,7 +85,7 @@ cd ~/oslab
 sudo umount hdc
 ```
 
-## 5
+## 5 添加函数声明
 在`linux-0.11/include/linux`下找到`sys.h`文件，打开进行编辑：
 添加下列语句：
 ```bash
@@ -99,7 +99,7 @@ sys_whoami, sys_iam
 ```
 保存后关闭文件
 
-## 2.6 实现内核函数
+## 6 实现内核函数
 在`~/oslab/linux-0.11/kernel`下新建文件，命名为`who.c`，内容如下：
 ```bash
 //who.c
@@ -143,7 +143,7 @@ int sys_whoami(char* name, unsigned int size){
 }
 ```
 
-## 2.6修改`Makefile`文件，使刚才添加的`who.c`可以和其它`Linux`代码编译链接到一起。修改内容如下：
+## 7 修改`Makefile`文件，使刚才添加的`who.c`可以和其它`Linux`代码编译链接到一起。修改内容如下：
 我们要修改的是`~/oslab/linux-0.11/kernel/Makefile`。需要修改两处：
 第一处:
 ```bash
@@ -180,13 +180,13 @@ exit.s exit.o: exit.c ../include/errno.h ../include/signal.h \
 ```
 添加了who.s who.o: who.c ../include/linux/kernel.h ../include/unistd.h。
 修改完成后，在kernel目录下打开终端，使用 make 编译即可。
-## 2.7 回到oslab目录，使用`./run`打开Bochs，在Bochs中编译`iam.c、whoami.c`：
+## 8 回到oslab目录，使用`./run`打开Bochs，在Bochs中编译`iam.c、whoami.c`：
 ```bash
 gcc -o iam iam.c
 gcc -o whoami whoami.c
 ```
 
-## 2.8 测试结果：
+## 9 测试结果：
 在Bochs中依次输入：
 ```bash
 iam XXX
